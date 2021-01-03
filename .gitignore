@@ -117,7 +117,19 @@ dist
 
 
 
-
+# .net core
 
 bin/
 obj/
+
+
+
+
+
+
+# certs
+
+*.crt
+*.srl
+*.pfx
+*.key
