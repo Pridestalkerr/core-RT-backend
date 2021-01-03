@@ -1,2 +1,2 @@
-# core-RT-backend
-A sample .net core real-time chat application.
+# core-chat
+A Demo real-time chat application for the web powered by .net core and react js. 
