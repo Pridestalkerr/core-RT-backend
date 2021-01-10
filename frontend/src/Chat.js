@@ -23,7 +23,7 @@ const Message = ({ msg }) => {
     return (
         <div className="msg p-3">
             <div>
-                <span className="d-inline mr-2 tuser"> { getUser() } </span>
+                <span className="d-inline mr-2 tuser"> { msg.from } </span>
                 <span className="tdate d-inline"> { new Date(msg.date).toISOString().slice(0, 19).replace(/-/g, "/").replace("T", " ") } </span>
             </div>
             <div>
@@ -49,6 +49,7 @@ const MessageBox = () => {
 
         try {
             await connection.invoke("SendMessage", {
+                "token": getToken(),
                 "content": value,
             });
         } catch (err) {
