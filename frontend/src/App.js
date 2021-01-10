@@ -9,6 +9,7 @@ import {
 import Chat from './Chat';
 import Home from './Home';
 import Login from './Login';
+import Register from './Register';
 
 
 
@@ -22,6 +23,9 @@ export default () => {
                     </Route>
                     <Route path="/login">
                         <Login />
+                    </Route>
+                    <Route path="/register">
+                        <Register />
                     </Route>
                     <Route path="/">
                         <Home />

@@ -57,8 +57,9 @@ const useSignUpForm = (initialValues, callback) => {
     
 export default () => {
 
-    const login = () => {
-        axios.post('https://localhost:5001/api/users/login', {
+    const register = () => {
+        axios.post('https://localhost:5001/api/users/register', {
+            email: inputs.email,
             username: inputs.username,
             password: inputs.password
         }).then(response => {
@@ -68,7 +69,7 @@ export default () => {
         }).catch(error => alert("something went wrong..."));
     };
 
-    const {inputs, handleInputChange, handleSubmit} = useSignUpForm({username: '', password1: ''}, login);
+    const {inputs, handleInputChange, handleSubmit} = useSignUpForm({email: '', username: '', password1: ''}, register);
 
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -101,10 +102,14 @@ export default () => {
             <div className="position-absolute h-100 start-0 bgg2d" style={{"margin-left": "80px"}}></div>
             <div className="d-flex justify-content-center align-items-center flex-column">
                 <h1 className="titleText tc1">
-                    Login
+                    Register
                 </h1>
                 <br/>
                 <form className="tc2" onSubmit={handleSubmit}>
+                    <label className="d-block">
+                        <input type="text" name="email" placeholder="email" className="bgg2 bord1 text-dark" onChange={handleInputChange} />
+                    </label>
+                    <br/>
                     <label className="d-block">
                         <input type="text" name="username" placeholder="username" className="bgg2 bord1 text-dark" onChange={handleInputChange} />
                     </label>
@@ -116,8 +121,8 @@ export default () => {
                     <input type="submit" value="Submit" className="bgg2 bord1 text-dark lighten" />
                 </form>
 
-                <Link to="/register" className="mt-3 d-block w-100 text-decoration-none lighten">
-                    <span className="w-100 center tc2"> Register instead </span>
+                <Link to="/login" className="mt-3 d-block w-100 text-decoration-none lighten">
+                    <span className="w-100 center tc2"> Login instead </span>
                 </Link>
             </div>
         </div>
