@@ -1,6 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
+using System;
 
 
 namespace WebChat.Models
@@ -13,7 +13,8 @@ namespace WebChat.Models
 
         public string From { get; set; }
 
-        public string Date { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime Date { get; set; }
 
         public string Content { get; set; }
     }

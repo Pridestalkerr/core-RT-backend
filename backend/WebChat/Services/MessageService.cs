@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 
 
@@ -39,6 +40,7 @@ namespace WebChat.Services
 
 		public async Task Create(Message msg)
 		{
+			msg.Date = DateTime.UtcNow;
 			await _messages.InsertOneAsync(msg);
 		}
 	}

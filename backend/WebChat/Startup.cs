@@ -16,6 +16,8 @@ using Microsoft.Extensions.Options;
 using WebChat.Models;
 using WebChat.Services;
 using WebChat.Hubs;
+using WebChat.Middleware;
+using WebChat.Controllers;
 
 
 namespace WebChat
@@ -40,6 +42,7 @@ namespace WebChat
             );
 
             services.AddSingleton<MessageService>();
+            services.AddSingleton<UserService>();
 
             services.AddSignalR();
 
@@ -66,7 +69,9 @@ namespace WebChat
                 .AllowCredentials()
             );
 
-            app.UseAuthorization();
+            // app.UseAuthorization();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
