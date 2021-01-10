@@ -26,6 +26,15 @@ namespace WebChat.Services
             var database = client.GetDatabase(settings.DBName);
 
             _users = database.GetCollection<User>(settings.Users);
+
+            var options = new CreateIndexOptions() { Unique = true };
+            var field = new StringFieldDefinition<User>("Email");
+            var indexDefinition = new IndexKeysDefinitionBuilder<User>().Ascending(field);
+            var indexModel = new CreateIndexModel<User>(indexDefinition, options);
+            field = new StringFieldDefinition<User>("Username");
+            indexDefinition = new IndexKeysDefinitionBuilder<User>().Ascending(field);
+            indexModel = new CreateIndexModel<User>(indexDefinition, options);
+            _users.Indexes.CreateOne(indexModel);
         }
 
         public async Task <AuthResponse> Authenticate(AuthRequest model)

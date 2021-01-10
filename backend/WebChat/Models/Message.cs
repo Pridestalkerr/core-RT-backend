@@ -11,6 +11,9 @@ namespace WebChat.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        [BsonIgnore]
+        public string Token { get; set; }
+
         public string From { get; set; }
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]

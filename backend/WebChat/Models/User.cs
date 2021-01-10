@@ -11,10 +11,8 @@ namespace WebChat.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [MongoUniqueStringIndex]
         public string Email { get; set; }
 
-        [MongoUniqueStringIndex]
         public string Username { get; set; }
 
         // [BsonIgnore]
